@@ -17,5 +17,3 @@ export const FilmCard = ({ film }) => {
     </div>
   );
 };
-
-// title, vote_average, release_date, poster_path
