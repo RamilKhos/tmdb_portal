@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { TextField } from '@mui/material';
 
+export const appBar = {
+  background: 'linear-gradient(90deg, rgba(9,34,46,1) 0%, rgba(6,42,61,1) 28%, rgba(2,30,45,1) 100%)',
+};
+
 export const headerTitle = {
   mr: 2,
   display: { xs: 'none', md: 'flex' },
