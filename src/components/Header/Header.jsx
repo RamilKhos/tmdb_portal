@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { HeaderMobileVersion } from './HeaderMobileVersion/HeaderMobileVersion';
 import { HeaderDesctopVersion } from './HeaderDesctopVersion/HeaderDesctopVersion';
+import { appBar } from '../tools/muiComponentsStyles';
 
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -18,7 +19,7 @@ export const Header = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#34495e' }}>
+    <AppBar position="static" sx={appBar}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-around' }}>
 
