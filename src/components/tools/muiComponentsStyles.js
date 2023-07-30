@@ -1,3 +1,6 @@
+import styled from '@emotion/styled';
+import { TextField } from '@mui/material';
+
 export const headerTitle = {
   mr: 2,
   display: { xs: 'none', md: 'flex' },
@@ -15,3 +18,21 @@ export const headerTitleMobileVersion = {
   display: { xs: 'flex', md: 'none' },
   flexGrow: 1,
 };
+
+export const CssTextField = styled(TextField)({
+  '& label': {
+    color: 'white',
+  },
+  '& label.Mui-focused': {
+    color: 'white',
+  },
+  '& .MuiInputBase-input': {
+    color: 'white',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'white',
+  },
+  '& .MuiInput-underline:before': {
+    borderBottomColor: 'white',
+  },
+});
