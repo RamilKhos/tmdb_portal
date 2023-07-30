@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
-import { headerTitle } from '../../tools/muiComponentsStyles';
-import { pages } from '../../tools/utils';
+import { pages } from '../../../tools/utils';
+import { headerTitle } from '../../../tools/muiComponentsStyles';
 
 export const HeaderDesctopVersion = ({ handleCloseNavMenu }) => (
   <>

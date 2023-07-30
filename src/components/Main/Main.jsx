@@ -10,8 +10,8 @@ export const Main = () => {
 
   if (isLoading) return <Loader />;
 
-  const paginationHandler = (value) => {
-    setPage(value);
+  const paginationHandler = (e) => {
+    setPage(+e.target.textContent);
   };
 
   const { results: popularFilms } = data;
@@ -26,6 +26,19 @@ export const Main = () => {
             : <div>No content</div>}
 
         </div>
+
+        {popularFilms
+          ? (
+            <Pagination
+              sx={{ display: 'flex', justifyContent: 'center' }}
+              color="secondary"
+              count={500}
+              page={page}
+              onChange={(e) => paginationHandler(e)}
+            />
+          )
+          : null}
+
       </section>
     </main>
   );
