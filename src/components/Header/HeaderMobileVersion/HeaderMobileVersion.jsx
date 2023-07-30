@@ -2,8 +2,8 @@ import {
   Box, Button, IconButton, Menu, MenuItem, Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { headerTitleMobileVersion } from '../../tools/muiComponentsStyles';
-import { pages } from '../../tools/utils';
+import { pages } from '../../../tools/utils';
+import { headerTitleMobileVersion } from '../../../tools/muiComponentsStyles';
 
 export const HeaderMobileVersion = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }) => (
   <>

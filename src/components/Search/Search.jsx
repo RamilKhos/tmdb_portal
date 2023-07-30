@@ -1,4 +1,4 @@
-import { CssTextField } from '../tools/muiComponentsStyles';
+import { CssTextField } from '../../tools/muiComponentsStyles';
 
 export const Search = () => (
   <section className="search">

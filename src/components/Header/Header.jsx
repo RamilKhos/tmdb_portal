@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { HeaderMobileVersion } from './HeaderMobileVersion/HeaderMobileVersion';
 import { HeaderDesctopVersion } from './HeaderDesctopVersion/HeaderDesctopVersion';
-import { appBar } from '../tools/muiComponentsStyles';
+import { appBar } from '../../tools/muiComponentsStyles';
 
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
