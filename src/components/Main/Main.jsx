@@ -1,43 +1,58 @@
 import Pagination from '@mui/material/Pagination';
-import { useState } from 'react';
-import { useGetPopularFilmsQuery } from '../../API';
+import { Button } from '@mui/material';
 import { Loader } from '../Loader/Loader';
 import { FilmCard } from '../FilmCard/FilmCard';
+import { useMain } from './useMain/useMain';
+import { categories, getFilms } from '../../tools/utils';
 
 export const Main = () => {
-  const [page, setPage] = useState(1);
-  const { data, isLoading } = useGetPopularFilmsQuery(page);
+  const {
+    page, activeBtn, paginationHandler, categoriesHandler, arrayHooks, isLoading, isFetching,
+  } = useMain();
 
-  if (isLoading) return <Loader />;
+  if (isLoading || isFetching) return <Loader />;
 
-  const paginationHandler = (e) => {
-    setPage(+e.target.textContent);
-  };
-
-  const { results: popularFilms } = data;
+  const { data } = getFilms(activeBtn, arrayHooks);
+  const { results: films, total_pages: pages } = data;
 
   return (
     <main className="main">
       <section className="content">
-        <div className="content__inner">
 
-          {popularFilms
-            ? popularFilms.map((film) => <FilmCard film={film} key={film.id} />)
-            : <div>No content</div>}
+        {films && films.length > 1 ? (
+          <>
+            <nav className="categories">
+              {categories.map((category, i) => (
+                <Button
+                  key={crypto.randomUUID()}
+                  value={category}
+                  sx={{
+                    marginRight: i !== categories.length - 1 && '3rem',
+                    color: 'white',
+                    border: activeBtn === category && '2px solid white',
+                  }}
+                  onClick={(e) => categoriesHandler(e)}
+                >
+                  {category}
+                </Button>
+              ))}
+            </nav>
 
-        </div>
+            <div className="content__inner">
+              {films.map((film) => <FilmCard film={film} key={film.id} />)}
+            </div>
 
-        {popularFilms
-          ? (
             <Pagination
               sx={{ display: 'flex', justifyContent: 'center' }}
               color="secondary"
-              count={500}
+              count={pages}
               page={page}
               onChange={(e) => paginationHandler(e)}
             />
-          )
-          : null}
+          </>
+        )
+
+          : <div className="no_content">No content</div>}
 
       </section>
     </main>

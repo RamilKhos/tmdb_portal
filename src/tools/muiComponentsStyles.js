@@ -40,3 +40,8 @@ export const CssTextField = styled(TextField)({
     borderBottomColor: 'white',
   },
 });
+
+export const buttonsCategories = {
+  marginRight: '3rem',
+  color: 'white',
+};
