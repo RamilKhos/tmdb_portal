@@ -1,4 +1,4 @@
-export const pages = ['Фильмы', 'Сериалы', 'Люди'];
+export const pages = ['Films', 'Serials', 'People'];
 export const categories = ['popular', 'now playing', 'top rating', 'upcoming'];
 
 export const changeTotalPage = (response, countPages) => ({

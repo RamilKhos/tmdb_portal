@@ -4,7 +4,7 @@ import {
   useGetPopularFilmsQuery,
   useGetTopRatingFilmsQuery,
   useGetUpcomingFilmsQuery,
-} from '../../../API';
+} from '../../../api';
 
 export const useMain = () => {
   const [page, setPage] = useState(1);
