@@ -5,12 +5,34 @@ import { FilmCard } from '../FilmCard/FilmCard';
 import { useMain } from './useMain/useMain';
 import { categories, getFilms } from '../../tools/utils';
 
-export const Main = () => {
+export const Main = ({ searchValue }) => {
   const {
-    page, activeBtn, paginationHandler, categoriesHandler, arrayHooks, isLoading, isFetching,
-  } = useMain();
+    page, activeBtn, paginationHandler, categoriesHandler, arrayHooks,
+    isLoading, isFetching, debounceValue, searchFilms,
+  } = useMain(searchValue);
 
   if (isLoading || isFetching) return <Loader />;
+
+  if (debounceValue !== '') {
+    const { data: { results: films, total_pages: pages } } = searchFilms;
+
+    return (
+      <main className="main">
+        <section className="content">
+          <div className="content__inner">
+            {films.map((film) => <FilmCard film={film} key={film.id} />)}
+          </div>
+          <Pagination
+            sx={{ display: 'flex', justifyContent: 'center' }}
+            color="secondary"
+            count={pages}
+            page={page}
+            onChange={(e) => paginationHandler(e)}
+          />
+        </section>
+      </main>
+    );
+  }
 
   const { data } = getFilms(activeBtn, arrayHooks);
   const { results: films, total_pages: pages } = data;

@@ -25,6 +25,12 @@ export const api = createApi({
     getUpcomingFilms: builder.query({
       query: (page) => `/movie/upcoming?page=${page}`,
     }),
+    getSearchFilms: builder.query({
+      query: (args) => {
+        const { searchValue, page } = args;
+        return `/search/movie?query=${searchValue}&page=${page}`;
+      },
+    }),
   }),
 });
 
@@ -33,4 +39,5 @@ export const {
   useGetNowPlayingFilmsQuery,
   useGetTopRatingFilmsQuery,
   useGetUpcomingFilmsQuery,
+  useGetSearchFilmsQuery,
 } = api;
