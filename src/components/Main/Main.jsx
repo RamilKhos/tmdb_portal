@@ -15,20 +15,24 @@ export const Main = ({ searchValue }) => {
 
   if (debounceValue !== '') {
     const { data: { results: films, total_pages: pages } } = searchFilms;
-
     return (
       <main className="main">
         <section className="content">
-          <div className="content__inner">
-            {films.map((film) => <FilmCard film={film} key={film.id} />)}
-          </div>
-          <Pagination
-            sx={{ display: 'flex', justifyContent: 'center' }}
-            color="secondary"
-            count={pages}
-            page={page}
-            onChange={(e) => paginationHandler(e)}
-          />
+          {films && films.length > 1 ? (
+            <>
+              <div className="content__inner">
+                {films.map((film) => <FilmCard film={film} key={film.id} />)}
+              </div>
+              <Pagination
+                sx={{ display: 'flex', justifyContent: 'center' }}
+                color="secondary"
+                count={pages}
+                page={page}
+                onChange={(e) => paginationHandler(e)}
+              />
+            </>
+          )
+            : <div className="no_content">Nothing found for your request...</div>}
         </section>
       </main>
     );
