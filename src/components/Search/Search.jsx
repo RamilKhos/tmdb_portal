@@ -1,14 +1,27 @@
 import { CssTextField } from '../../tools/muiComponentsStyles';
 
-export const Search = () => (
-  <section className="search">
-    <div className="search__inner">
-      <div className="search__inner-description">
-        <h2 className="search__title">Добро пожаловать.</h2>
-        <h3 className="search__description">Миллионы фильмов, сериалов и людей.</h3>
-        <h3 className="search__description">Исследуйте сейчас.</h3>
+export const Search = ({ searchValue, setSearchValue }) => {
+  const searchHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  return (
+    <section className="search">
+      <div className="search__inner">
+        <div className="search__inner-description">
+          <h2 className="search__title">Welcome.</h2>
+          <h3 className="search__description">Millions of movies, series and people.</h3>
+          <h3 className="search__description">Explore now.</h3>
+        </div>
+        <CssTextField
+          value={searchValue}
+          onChange={(e) => searchHandler(e)}
+          sx={{ width: '100%' }}
+          id="standard-basic"
+          label="Search..."
+          variant="standard"
+        />
       </div>
-      <CssTextField sx={{ width: '100%', backgroundColor: '' }} id="standard-basic" label="Поиск..." variant="standard" />
-    </div>
-  </section>
-);
+    </section>
+  );
+};
