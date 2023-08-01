@@ -54,11 +54,19 @@
     width: 100%;
 }
 
+.no_content {
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+}
+
 .content {
     width: 95%;
     padding: .8rem 2rem 2rem 2rem;
     text-align: center;
-
 }
 
 .categories {
