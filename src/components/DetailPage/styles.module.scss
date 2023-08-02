@@ -1,0 +1,159 @@
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+.movie_card {
+  font: 14px/22px "Lato", Arial, sans-serif;
+  color: #A9A8A3;
+  display: flex;
+  flex: 1;
+
+    .container {
+        flex: 1;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        padding: 10% 5% 5% 5%;
+  
+        .container_inner {
+            position: relative;
+            z-index: 9;
+            display: flex;
+
+            @media (max-width: 870px) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            @media (max-width: 500px) {
+                // display: block;
+            }
+
+            .posterContainer {
+                height: 100%;
+                position: relative;
+
+                .voteAverage {
+                    width: 3em;
+                    height: 3em;
+                    border-radius: 50%;
+                    border: 3px solid rgb(255, 231, 16);
+                    background: black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: bold;
+                    color: white;  
+                    position: absolute;
+                    top: 10%;
+                    right: 0;
+                    z-index: 99;
+                }
+                
+                @media (max-width: 951px) {
+                    padding-top: 2rem;
+                }
+
+                @media (max-width: 701px) {
+                    padding-top: 0;
+                }
+                
+                .poster {
+                    border-radius: 15px;
+                }
+            }
+
+            .content {
+                padding: 4.5rem 2rem 0 3rem;
+                position: relative;
+
+                @media (max-width: 1200px) {
+                    padding: 2.5rem 2rem 0 3rem;
+                }
+
+                @media (max-width: 500px) {
+                    padding: 1.5rem 1rem 0 1rem;
+                }
+
+                .details {                    
+                    .title {
+                        color: white;
+                        font-size: 2.8rem;
+                        line-height: 3rem;
+                        margin-bottom: .2rem;
+                    }
+                    
+                    .tagline {    
+                        color: #ece4da;
+                        font-size: 1.5rem;    
+                        font-weight: 300;
+                        margin-bottom: 1.8rem;
+                    }
+                }
+            
+                .description {
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                    color: white;
+            
+                    .genre {
+                        .tag {
+                            display: inline-block;
+                            color: #B1B0AC;
+                            background: white;
+                            border-radius: 10px;
+                            font-size: 1rem;
+                            line-height: 1rem;
+                            padding: .5rem;
+                            margin-right: 1rem;
+                            margin-bottom: 1rem;
+                        }
+                    }
+            
+                    .overview {
+                        padding: 2rem 0;
+    
+                        .avatars {
+                            padding-top: 1rem;
+                            display: inline-block;
+
+                            .actorImage {
+                                cursor: pointer;
+                                border-radius: 50%;
+                                width: 50px;
+                                height: 70px;
+                                margin-right: 1rem;
+
+                                &:hover {
+                                    opacity: 0.6;
+                                }
+                            }
+                        } 
+                    }       
+                }
+            }      
+        }
+
+          
+        .backdrop_container {
+            height: 25rem;
+            overflow: hidden;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 10% 100%, 0 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+            .backdrop {
+                width: 100%;
+                transform: translate(0, -150px);
+                filter: grayscale(20%) brightness(70%);
+                
+                @media (max-width: 701px) {
+                    transform: none;
+                }
+            }
+        }
+    }
+}

@@ -5,7 +5,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { pages } from '../../../tools/utils';
 import { headerTitleMobileVersion } from '../../../tools/muiComponentsStyles';
 
-export const HeaderMobileVersion = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }) => (
+export const HeaderMobileVersion = ({
+  anchorElNav,
+  handleOpenNavMenu,
+  handleCloseNavMenu,
+  btnLogoHandler,
+}) => (
   <>
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
       <IconButton
@@ -36,7 +41,7 @@ export const HeaderMobileVersion = ({ anchorElNav, handleOpenNavMenu, handleClos
       </Menu>
     </Box>
 
-    <Button sx={{ display: { xs: 'flex', md: 'none' } }}>
+    <Button sx={{ display: { xs: 'flex', md: 'none' } }} onClick={btnLogoHandler}>
       <Typography variant="h4" noWrap sx={headerTitleMobileVersion}>
         TMDB Portal
       </Typography>

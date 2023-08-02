@@ -31,6 +31,12 @@ export const api = createApi({
         return `/search/movie?query=${searchValue}&page=${page}`;
       },
     }),
+    getFilmById: builder.query({
+      query: (id) => `/movie/${id}`,
+    }),
+    getMovieActors: builder.query({
+      query: (id) => `/movie/${id}/credits?language=en-US`,
+    }),
   }),
 });
 
@@ -40,4 +46,6 @@ export const {
   useGetTopRatingFilmsQuery,
   useGetUpcomingFilmsQuery,
   useGetSearchFilmsQuery,
+  useGetFilmByIdQuery,
+  useGetMovieActorsQuery,
 } = api;
