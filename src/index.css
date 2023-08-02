@@ -137,6 +137,12 @@
     color: white;
 }
 
+.card__wrapper-btn {
+    background-color: inherit;
+    border: 0;
+    cursor: pointer;
+}
+
 
 @media (max-width: 920px){
     .content__inner {
