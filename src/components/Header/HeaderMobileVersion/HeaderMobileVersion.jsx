@@ -10,6 +10,7 @@ export const HeaderMobileVersion = ({
   handleOpenNavMenu,
   handleCloseNavMenu,
   btnLogoHandler,
+  categoriesBtnHandler,
 }) => (
   <>
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -32,6 +33,7 @@ export const HeaderMobileVersion = ({
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
         sx={{ display: { xs: 'block', md: 'none' } }}
+        onClick={(e) => categoriesBtnHandler(e)}
       >
         {pages.map((page) => (
           <MenuItem key={page} onClick={handleCloseNavMenu}>

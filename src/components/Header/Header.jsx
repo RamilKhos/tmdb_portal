@@ -24,6 +24,13 @@ export const Header = () => {
     navigate('/');
   };
 
+  const categoriesBtnHandler = (e) => {
+    const nameCategory = e.target.textContent;
+    if (nameCategory === 'Films') return navigate('/');
+    if (nameCategory === 'Serials') return 12;
+    return navigate('/people');
+  };
+
   return (
     <AppBar position="static" sx={appBar}>
       <Container maxWidth="xl">
@@ -32,6 +39,7 @@ export const Header = () => {
           <HeaderDesctopVersion
             handleCloseNavMenu={handleCloseNavMenu}
             btnLogoHandler={btnLogoHandler}
+            categoriesBtnHandler={categoriesBtnHandler}
           />
 
           <HeaderMobileVersion
@@ -39,6 +47,7 @@ export const Header = () => {
             handleOpenNavMenu={handleOpenNavMenu}
             handleCloseNavMenu={handleCloseNavMenu}
             btnLogoHandler={btnLogoHandler}
+            categoriesBtnHandler={categoriesBtnHandler}
           />
 
         </Toolbar>

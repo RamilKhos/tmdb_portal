@@ -2,7 +2,11 @@ import { Box, Button, Typography } from '@mui/material';
 import { pages } from '../../../tools/utils';
 import { headerTitle } from '../../../tools/muiComponentsStyles';
 
-export const HeaderDesctopVersion = ({ handleCloseNavMenu, btnLogoHandler }) => (
+export const HeaderDesctopVersion = ({
+  handleCloseNavMenu,
+  btnLogoHandler,
+  categoriesBtnHandler,
+}) => (
   <>
     <Button sx={{ display: { xs: 'none', md: 'flex' } }} onClick={btnLogoHandler}>
       <Typography variant="h4" noWrap sx={headerTitle}>
@@ -10,7 +14,7 @@ export const HeaderDesctopVersion = ({ handleCloseNavMenu, btnLogoHandler }) => 
       </Typography>
     </Button>
 
-    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+    <Box sx={{ display: { xs: 'none', md: 'flex' } }} onClick={(e) => categoriesBtnHandler(e)}>
       {pages.map((page) => (
         <Button
           key={page}
