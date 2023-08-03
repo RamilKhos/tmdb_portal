@@ -6,7 +6,8 @@ import { App } from './App';
 import './index.css';
 import { store } from './components/store/store';
 import { DetailPage } from './components/DetailPage/DetailPage';
-import { Main } from './components/Main/Main';
+import { MainFilms } from './components/MainFilms/MainFilms';
+import { MainPeople } from './components/MainPeople/MainPeople';
 
 const myRouter = createBrowserRouter([
   {
@@ -15,11 +16,15 @@ const myRouter = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Main />,
+        element: <MainFilms />,
       },
       {
         path: 'movie/:id',
         element: <DetailPage />,
+      },
+      {
+        path: 'people',
+        element: <MainPeople />,
       },
     ],
   },

@@ -34,8 +34,17 @@ export const api = createApi({
     getFilmById: builder.query({
       query: (id) => `/movie/${id}`,
     }),
-    getMovieActors: builder.query({
+    getMoviePeople: builder.query({
       query: (id) => `/movie/${id}/credits?language=en-US`,
+    }),
+    getAllPeople: builder.query({
+      query: (page) => `/person/popular?page=${page}`,
+    }),
+    getSearchPerson: builder.query({
+      query: (args) => {
+        const { name, page } = args;
+        return `/search/person?query=${name}&page=${page}`;
+      },
     }),
   }),
 });
@@ -47,5 +56,7 @@ export const {
   useGetUpcomingFilmsQuery,
   useGetSearchFilmsQuery,
   useGetFilmByIdQuery,
-  useGetMovieActorsQuery,
+  useGetMoviePeopleQuery,
+  useGetAllPeopleQuery,
+  useGetSearchPersonQuery,
 } = api;

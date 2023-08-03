@@ -8,7 +8,7 @@ import {
 } from '../../../api';
 import { useDebounce } from '../../useDebounce/useDeboounce';
 
-export const useMain = (searchValue) => {
+export const useMainFilms = (searchValue) => {
   const [page, setPage] = useState(1);
   const [activeBtn, setActiveBtn] = useState('popular');
   const debounceValue = useDebounce(searchValue, 500);

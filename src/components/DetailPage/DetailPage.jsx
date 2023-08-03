@@ -2,7 +2,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { IconButton, Tooltip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useGetFilmByIdQuery, useGetMovieActorsQuery } from '../../api';
+import { useGetFilmByIdQuery, useGetMoviePeopleQuery } from '../../api';
 import { Loader } from '../Loader/Loader';
 import styles from './styles.module.scss';
 
@@ -18,7 +18,7 @@ export const DetailPage = () => {
   const {
     data: actors, isLoading: isLoadGetActors,
     isFetching: isFetchGetActors,
-  } = useGetMovieActorsQuery(id);
+  } = useGetMoviePeopleQuery(id);
 
   if (isLoading || isLoadGetActors || isFetching || isFetchGetActors) return <Loader />;
 
