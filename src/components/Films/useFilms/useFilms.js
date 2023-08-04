@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDebounce } from '../../useDebounce/useDeboounce';
+import { useDebounce } from '../../../tools/useDebounce/useDeboounce';
 import {
   useGetNowPlayingFilmsQuery,
   useGetPopularFilmsQuery, useGetSearchFilmsQuery,

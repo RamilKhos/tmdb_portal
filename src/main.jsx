@@ -4,11 +4,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { App } from './App';
 import './index.css';
-import { store } from './components/store/store';
 import { DetailPageFilms } from './components/DetailPageFilms/DetailPageFilms';
 import { MainFilms } from './components/MainFilms/MainFilms';
 import { MainPeople } from './components/MainPeople/MainPeople';
 import { DetailPagePerson } from './components/DetailPagePerson/DetailPagePerson';
+import { store } from './store/store';
 
 const myRouter = createBrowserRouter([
   {

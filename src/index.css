@@ -90,9 +90,6 @@
     border-image-slice: 1;
 }
 
-.card__poster {
-}
-
 .card__images {
     border-radius: 1rem;
     display: block;

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useGetAllPeopleQuery, useGetSearchPersonQuery } from '../../../api';
-import { useDebounce } from '../../useDebounce/useDeboounce';
+import { useDebounce } from '../../../tools/useDebounce/useDeboounce';
 
 export const usePeople = (search, page, setPage) => {
   const debounceValue = useDebounce(search, 500);

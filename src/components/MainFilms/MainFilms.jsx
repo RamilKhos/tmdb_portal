@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search } from '../Search/Search';
+import { FilmSearch } from '../FilmSearch/FilmSearch';
 import { Films } from '../Films/Films';
 
 export const MainFilms = () => {
@@ -7,7 +7,7 @@ export const MainFilms = () => {
 
   return (
     <>
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      <FilmSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <Films searchValue={searchValue} />
     </>
   );
