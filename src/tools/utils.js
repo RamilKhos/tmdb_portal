@@ -1,3 +1,7 @@
+export const POSTER_URL_W300 = 'https://image.tmdb.org/t/p/w300';
+export const POSTER_URL_W92 = 'https://image.tmdb.org/t/p/w92';
+export const BACKDROP_URL = 'https://image.tmdb.org/t/p/original';
+
 export const pages = ['Films', 'Serials', 'People'];
 export const categories = ['popular', 'now playing', 'top rating', 'upcoming'];
 
