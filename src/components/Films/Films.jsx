@@ -52,7 +52,7 @@ export const Films = ({ searchValue }) => {
                   key={crypto.randomUUID()}
                   value={category}
                   sx={{
-                    marginRight: i !== categories.length - 1 && '3rem',
+                    marginRight: i !== categories.length - 1 && '2rem',
                     color: 'white',
                     border: activeBtn === category && '2px solid white',
                   }}

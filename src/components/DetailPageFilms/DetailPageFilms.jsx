@@ -1,43 +1,41 @@
 /* eslint-disable camelcase */
-import { useNavigate, useParams } from 'react-router-dom';
 import { IconButton, Tooltip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useGetFilmByIdQuery, useGetMoviePeopleQuery } from '../../api';
 import { Loader } from '../Loader/Loader';
 import styles from './styles.module.scss';
+import { useDetailPageFilms } from './useDetailPageFilms/useDetailPageFilms';
+import { BACKDROP_URL, POSTER_URL_W300, POSTER_URL_W92 } from '../../tools/utils';
 
-const POSTER_URL = 'https://image.tmdb.org/t/p/w300';
-const ACTOR_AVATAR_URL = 'https://image.tmdb.org/t/p/w92';
-const BACKDROP_URL = 'https://image.tmdb.org/t/p/original';
-
-export const DetailPage = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-
-  const { data: movie, isLoading, isFetching } = useGetFilmByIdQuery(id);
+export const DetailPageFilms = () => {
   const {
-    data: actors, isLoading: isLoadGetActors,
-    isFetching: isFetchGetActors,
-  } = useGetMoviePeopleQuery(id);
+    movie,
+    actors,
+    isLoad,
+    isFetch,
+    btnBackHandler,
+    btnPersonHandler,
+  } = useDetailPageFilms();
 
-  if (isLoading || isLoadGetActors || isFetching || isFetchGetActors) return <Loader />;
+  if (isLoad || isFetch) return <Loader />;
 
   const {
     backdrop_path, poster_path, genres, overview, release_date, tagline,
     title, vote_average,
   } = movie;
 
-  const btnBackHandler = () => {
-    navigate('/');
-  };
-
   const filterActors = (array) => {
     const updateArray = array.filter((actor) => actor.profile_path !== null);
     return updateArray.map((item, i) => {
       if (i > 9) return null;
       return (
-        <Tooltip title={item.name} key={i}>
-          <img src={ACTOR_AVATAR_URL + item.profile_path} className={styles.actorImage} alt={`avatar+${i}`} />
+        <Tooltip title={item.name} key={item.id}>
+          <button type="button" className={styles.avatarsImg} onClick={() => btnPersonHandler(item.id)}>
+            <img
+              src={POSTER_URL_W92 + item.profile_path}
+              className={styles.actorImage}
+              alt={`avatar+${i}`}
+            />
+          </button>
         </Tooltip>
       );
     });
@@ -51,7 +49,7 @@ export const DetailPage = () => {
 
           <div className={styles.posterContainer}>
             <div className={styles.voteAverage}>{Math.round(vote_average * 10) / 10}</div>
-            <img src={POSTER_URL + poster_path} alt="poster" className={styles.poster} />
+            <img src={POSTER_URL_W300 + poster_path} alt="poster" className={styles.poster} />
           </div>
 
           <div className={styles.content}>

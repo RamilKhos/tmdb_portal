@@ -1,6 +1,6 @@
 import { CssTextField } from '../../tools/muiComponentsStyles';
 
-export const Search = ({ searchValue, setSearchValue }) => {
+export const FilmSearch = ({ searchValue, setSearchValue }) => {
   const searchHandler = (e) => {
     setSearchValue(e.target.value);
   };

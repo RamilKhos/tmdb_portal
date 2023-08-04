@@ -28,7 +28,7 @@ export const Header = () => {
     const nameCategory = e.target.textContent;
     if (nameCategory === 'Films') return navigate('/');
     if (nameCategory === 'Serials') return 12;
-    return navigate('/people');
+    return navigate('/person');
   };
 
   return (

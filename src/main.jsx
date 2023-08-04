@@ -4,10 +4,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { App } from './App';
 import './index.css';
-import { store } from './components/store/store';
-import { DetailPage } from './components/DetailPage/DetailPage';
+import { DetailPageFilms } from './components/DetailPageFilms/DetailPageFilms';
 import { MainFilms } from './components/MainFilms/MainFilms';
 import { MainPeople } from './components/MainPeople/MainPeople';
+import { DetailPagePerson } from './components/DetailPagePerson/DetailPagePerson';
+import { store } from './store/store';
 
 const myRouter = createBrowserRouter([
   {
@@ -20,11 +21,15 @@ const myRouter = createBrowserRouter([
       },
       {
         path: 'movie/:id',
-        element: <DetailPage />,
+        element: <DetailPageFilms />,
       },
       {
-        path: 'people',
+        path: 'person',
         element: <MainPeople />,
+      },
+      {
+        path: 'person/:id',
+        element: <DetailPagePerson />,
       },
     ],
   },

@@ -46,6 +46,12 @@ export const api = createApi({
         return `/search/person?query=${name}&page=${page}`;
       },
     }),
+    getPersonById: builder.query({
+      query: (id) => `/person/${id}`,
+    }),
+    getPersonMovieCredits: builder.query({
+      query: (id) => `/person/${id}/movie_credits`,
+    }),
   }),
 });
 
@@ -59,4 +65,6 @@ export const {
   useGetMoviePeopleQuery,
   useGetAllPeopleQuery,
   useGetSearchPersonQuery,
+  useGetPersonByIdQuery,
+  useGetPersonMovieCreditsQuery,
 } = api;

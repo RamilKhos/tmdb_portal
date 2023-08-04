@@ -77,6 +77,10 @@
                         font-size: 2.8rem;
                         line-height: 3rem;
                         margin-bottom: .2rem;
+
+                        @media (max-width: 870px) {
+                            font-size: 2rem;
+                        }                        
                     }
                     
                     .tagline {    
@@ -84,6 +88,10 @@
                         font-size: 1.5rem;    
                         font-weight: 300;
                         margin-bottom: 1.8rem;
+
+                        @media (max-width: 870px) {
+                            font-size: 1.3rem;
+                        } 
                     }
                 }
             
@@ -113,15 +121,20 @@
                             padding-top: 1rem;
                             display: inline-block;
 
-                            .actorImage {
-                                cursor: pointer;
-                                border-radius: 50%;
-                                width: 50px;
-                                height: 70px;
-                                margin-right: 1rem;
-
-                                &:hover {
-                                    opacity: 0.6;
+                            .avatarsImg {
+                                background-color: transparent;
+                                border: none;
+    
+                                .actorImage {
+                                    cursor: pointer;
+                                    border-radius: 50%;
+                                    width: 50px;
+                                    height: 70px;
+                                    margin-right: 1rem;
+    
+                                    &:hover {
+                                        opacity: 0.6;
+                                    }
                                 }
                             }
                         } 
