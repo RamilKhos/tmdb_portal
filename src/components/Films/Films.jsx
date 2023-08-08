@@ -1,19 +1,24 @@
 import { Button, Pagination } from '@mui/material';
 import { FilmCard } from '../FilmCard/FilmCard';
 import { categories, getFilms } from '../../tools/utils';
-import { Loader } from '../Loader/Loader';
 import { useFilms } from './useFilms/useFilms';
+import { Loader } from '../Loader/Loader';
+import { MainErrorScreen } from '../MainErrorScreen/MainErrorScreen';
 
 export const Films = ({ searchValue }) => {
   const {
     page, activeBtn, paginationHandler, categoriesHandler, arrayHooks,
-    isLoading, isFetching, debounceValue, searchFilms,
+    debounceValue, searchFilms,
   } = useFilms(searchValue);
 
-  if (isLoading || isFetching) return <Loader />;
-
   if (debounceValue !== '') {
-    const { data: { results: films, total_pages: pages } } = searchFilms;
+    const {
+      data: { results: films, total_pages: pages }, isLoading, isFetching, isError,
+    } = searchFilms;
+
+    if (isLoading || isFetching) return <Loader />;
+    if (isError) return <MainErrorScreen />;
+
     return (
       <main className="main">
         <section className="content">

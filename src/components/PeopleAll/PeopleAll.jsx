@@ -3,6 +3,7 @@ import { Pagination } from '@mui/material';
 import { PersonCard } from '../PersonCard/PersonCard';
 
 export const PeopleAll = ({ allPeople, page, paginationHandler }) => {
+  if (!allPeople) return null;
   const { results: people, total_pages } = allPeople;
 
   return (

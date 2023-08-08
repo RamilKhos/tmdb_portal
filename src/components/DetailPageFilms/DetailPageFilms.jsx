@@ -5,6 +5,7 @@ import { Loader } from '../Loader/Loader';
 import styles from './styles.module.scss';
 import { useDetailPageFilms } from './useDetailPageFilms/useDetailPageFilms';
 import { BACKDROP_URL, POSTER_URL_W300, POSTER_URL_W92 } from '../../tools/utils';
+import { MainErrorScreen } from '../MainErrorScreen/MainErrorScreen';
 
 export const DetailPageFilms = () => {
   const {
@@ -12,14 +13,16 @@ export const DetailPageFilms = () => {
     actors,
     isLoad,
     isFetch,
+    isError,
     btnBackHandler,
     btnPersonHandler,
   } = useDetailPageFilms();
 
   if (isLoad || isFetch) return <Loader />;
+  if (isError) return <MainErrorScreen />;
 
   const {
-    backdrop_path, poster_path, genres, overview, release_date, tagline,
+    backdrop_path, poster_path, genres, overview, tagline,
     title, vote_average,
   } = movie;
 
@@ -79,7 +82,9 @@ export const DetailPageFilms = () => {
         </div>
 
         <div className={styles.backdrop_container}>
-          <img src={BACKDROP_URL + backdrop_path} alt="backdrop" className={styles.backdrop} />
+          {backdrop_path
+            ? <img src={BACKDROP_URL + backdrop_path} alt="backdrop" className={styles.backdrop} />
+            : null}
         </div>
 
         <IconButton
