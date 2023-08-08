@@ -7,6 +7,7 @@ import { Loader } from '../Loader/Loader';
 import styles from './styles.module.scss';
 import { useDetailPagePerson } from './useDetailPagePerson/useDetailPagePerson';
 import { POSTER_URL_W300, POSTER_URL_W92 } from '../../tools/utils';
+import { MainErrorScreen } from '../MainErrorScreen/MainErrorScreen';
 
 export const DetailPagePerson = () => {
   const {
@@ -15,12 +16,14 @@ export const DetailPagePerson = () => {
     moviePerson,
     isLoad,
     isFetch,
+    isError,
     btnBackHandler,
     handleShowAllRows,
     buttonFilmHandler,
   } = useDetailPagePerson();
 
   if (isLoad || isFetch) return <Loader />;
+  if (isError) return <MainErrorScreen />;
 
   const {
     biography, birthday, name, place_of_birth, profile_path,

@@ -5,27 +5,30 @@ import { useGetPersonByIdQuery, useGetPersonMovieCreditsQuery } from '../../../a
 export const useDetailPagePerson = () => {
   const [rowsToShow, setRowsToShow] = useState(3);
   const [showAll, setShowAll] = useState(false);
+  const navigate = useNavigate();
 
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const {
     data: person,
     isLoading: isLoadGetPerson,
     isFetching: isFetchGetPerson,
+    isError: isErrGetPerson,
   } = useGetPersonByIdQuery(id);
 
   const {
     data: moviePerson,
     isLoading: isLoadMovieCredits,
     isFetching: isFetchMovieCredits,
+    isError: isErrMovieCredits,
   } = useGetPersonMovieCreditsQuery(id);
 
   const isLoad = isLoadGetPerson || isLoadMovieCredits;
   const isFetch = isFetchGetPerson || isFetchMovieCredits;
+  const isError = isErrGetPerson || isErrMovieCredits;
 
   const btnBackHandler = () => {
-    navigate('/person');
+    navigate(-1);
   };
 
   const handleShowAllRows = () => {
@@ -47,6 +50,7 @@ export const useDetailPagePerson = () => {
     moviePerson,
     isLoad,
     isFetch,
+    isError,
     btnBackHandler,
     handleShowAllRows,
     buttonFilmHandler,

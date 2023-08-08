@@ -5,17 +5,20 @@ export const useDetailPageFilms = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: movie, isLoading, isFetching } = useGetFilmByIdQuery(id);
   const {
-    data: actors, isLoading: isLoadGetActors,
-    isFetching: isFetchGetActors,
+    data: movie, isLoading: isLoadGetFilm, isFetching: isFetchGetFilm, isError: isErrGetFilm,
+  } = useGetFilmByIdQuery(id);
+  const {
+    data: actors, isLoading: isLoadGetPerson,
+    isFetching: isFetchGetPerson, isError: isErrGetMoviePeopleQuery,
   } = useGetMoviePeopleQuery(id);
 
-  const isLoad = isLoading || isLoadGetActors;
-  const isFetch = isFetching || isFetchGetActors;
+  const isLoad = isLoadGetFilm || isLoadGetPerson;
+  const isFetch = isFetchGetFilm || isFetchGetPerson;
+  const isError = isErrGetFilm || isErrGetMoviePeopleQuery;
 
   const btnBackHandler = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   const btnPersonHandler = (personId) => {
@@ -27,6 +30,7 @@ export const useDetailPageFilms = () => {
     actors,
     isLoad,
     isFetch,
+    isError,
     btnBackHandler,
     btnPersonHandler,
   };
