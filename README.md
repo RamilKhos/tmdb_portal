@@ -1,6 +1,6 @@
 ## TMDB Portal
 https://tmdbportal.netlify.app/
-Работает с включенным VPN!
+ - работает с включенным VPN!
 
 ## Getting Started
 ```
