@@ -1,13 +1,25 @@
 import { useState } from 'react';
-import { FilmSearch } from '../FilmSearch/FilmSearch';
 import { Films } from '../Films/Films';
 import { MainErrorScreen } from '../MainErrorScreen/MainErrorScreen';
-import { useFilms } from '../Films/useFilms/useFilms';
 import { Loader } from '../Loader/Loader';
+import { FilmSearch } from '../FilmSearch/FilmSearch';
+import { useMainFilms } from './useMainFilms/useMainFilms';
 
 export const MainFilms = () => {
   const [searchValue, setSearchValue] = useState('');
-  const { isError, isLoading, isFetching } = useFilms();
+
+  const {
+    debounceValue,
+    page,
+    searchFilms,
+    activeBtn,
+    paginationHandler,
+    categoriesHandler,
+    arrayHooks,
+    isLoading,
+    isFetching,
+    isError,
+  } = useMainFilms(searchValue);
 
   if (isLoading || isFetching) return <Loader />;
   if (isError) return <MainErrorScreen />;
@@ -15,7 +27,18 @@ export const MainFilms = () => {
   return (
     <>
       <FilmSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <Films searchValue={searchValue} />
+      <Films
+        debounceValue={debounceValue}
+        page={page}
+        searchFilms={searchFilms}
+        isLoading={isLoading}
+        isFetching={isFetching}
+        isError={isError}
+        activeBtn={activeBtn}
+        arrayHooks={arrayHooks}
+        paginationHandler={paginationHandler}
+        categoriesHandler={categoriesHandler}
+      />
     </>
   );
 };

@@ -2,15 +2,16 @@ import { Pagination } from '@mui/material';
 import { PersonCard } from '../PersonCard/PersonCard';
 import useResize from '../../tools/customHooks/useResize/useResize';
 
-export const PeopleAll = ({ allPeople, page, paginationHandler }) => {
+export const PersonSearched = ({
+  searchPerson, page, paginationHandler,
+}) => {
   const [width] = useResize();
-  const { results: people, total_pages } = allPeople;
-
+  const { results: allPeople, total_pages } = searchPerson;
   return (
-    people && people.length > 1 ? (
+    allPeople && allPeople.length > 1 ? (
       <>
         <div className="content__inner">
-          {people.map((person) => <PersonCard person={person} key={person.id} />)}
+          {allPeople.map((person) => <PersonCard person={person} key={person.id} />)}
         </div>
 
         <Pagination
@@ -23,6 +24,7 @@ export const PeopleAll = ({ allPeople, page, paginationHandler }) => {
         />
       </>
     )
-      : <div className="no_content">No person</div>
+
+      : <div className="no_content">Nothing found for your request...</div>
   );
 };
