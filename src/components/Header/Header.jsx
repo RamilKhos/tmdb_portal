@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -26,9 +25,7 @@ export const Header = () => {
 
   const categoriesBtnHandler = (e) => {
     const nameCategory = e.target.textContent;
-    if (nameCategory === 'Films') return navigate('/');
-    if (nameCategory === 'Serials') return 12;
-    return navigate('/person');
+    return nameCategory === 'Films' ? navigate('/') : navigate('/person');
   };
 
   return (

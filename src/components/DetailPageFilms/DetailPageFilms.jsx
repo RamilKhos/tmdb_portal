@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { IconButton, Tooltip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Loader } from '../Loader/Loader';
@@ -6,6 +5,7 @@ import styles from './styles.module.scss';
 import { useDetailPageFilms } from './useDetailPageFilms/useDetailPageFilms';
 import { BACKDROP_URL, POSTER_URL_W300, POSTER_URL_W92 } from '../../tools/utils';
 import { MainErrorScreen } from '../MainErrorScreen/MainErrorScreen';
+import no_image from '../../assets/images/no_image.png';
 
 export const DetailPageFilms = () => {
   const {
@@ -52,7 +52,7 @@ export const DetailPageFilms = () => {
 
           <div className={styles.posterContainer}>
             <div className={styles.voteAverage}>{Math.round(vote_average * 10) / 10}</div>
-            <img src={POSTER_URL_W300 + poster_path} alt="poster" className={styles.poster} />
+            <img src={poster_path ? POSTER_URL_W300 + poster_path : no_image} alt="poster" className={styles.poster} />
           </div>
 
           <div className={styles.content}>

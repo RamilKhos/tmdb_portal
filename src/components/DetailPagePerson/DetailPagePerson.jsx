@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import {
   Button, IconButton, ListItem,
 } from '@mui/material';
@@ -8,6 +7,7 @@ import styles from './styles.module.scss';
 import { useDetailPagePerson } from './useDetailPagePerson/useDetailPagePerson';
 import { POSTER_URL_W300, POSTER_URL_W92 } from '../../tools/utils';
 import { MainErrorScreen } from '../MainErrorScreen/MainErrorScreen';
+import no_image from '../../assets/images/no_image.png';
 
 export const DetailPagePerson = () => {
   const {
@@ -39,7 +39,7 @@ export const DetailPagePerson = () => {
         <div className={styles.container_inner}>
 
           <div className={styles.posterContainer}>
-            <img src={POSTER_URL_W300 + profile_path} alt="poster" className={styles.poster} />
+            <img src={profile_path ? POSTER_URL_W300 + profile_path : no_image} alt="poster" className={styles.poster} />
           </div>
 
           <div className={styles.content}>
@@ -70,34 +70,39 @@ export const DetailPagePerson = () => {
           <ArrowBackIcon />
         </IconButton>
 
-        <h3>Filmography</h3>
+        {movieCredits.length > 1 ? (
+          <>
+            <h3>Filmography</h3>
 
-        <div className={styles.listContainer}>
-          <ul>
-            {movieCredits.slice(0, rowsToShow).map((movie) => (
-              <button type="button" key={movie.id} onClick={() => buttonFilmHandler(movie.id)}>
-                <ListItem
-                  alignItems="flex-start"
-                  sx={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #A9A8A3',
-                  }}
-                >
-                  <div className={styles.list}>
-                    <img src={POSTER_URL_W92 + movie.poster_path} alt="poster_movie" />
-                    <div>
-                      <h2>{movie.title}</h2>
-                      <p>{movie.character}</p>
-                    </div>
-                  </div>
-                  <p className={styles.releaseDate}>{movie.release_date}</p>
-                </ListItem>
-              </button>
-            ))}
-          </ul>
-          <Button onClick={handleShowAllRows} sx={{ border: '2px solid grey', color: 'grey' }}>
-            {rowsToShow <= 3 ? 'See all' : 'Collapse All' }
-          </Button>
-        </div>
+            <div className={styles.listContainer}>
+              <ul>
+                {movieCredits.slice(0, rowsToShow).map((movie) => (
+                  <button type="button" key={movie.id} onClick={() => buttonFilmHandler(movie.id)}>
+                    <ListItem
+                      alignItems="flex-start"
+                      sx={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #A9A8A3',
+                      }}
+                    >
+                      <div className={styles.list}>
+                        <img src={POSTER_URL_W92 + movie.poster_path} alt="poster_movie" />
+                        <div>
+                          <h2>{movie.title}</h2>
+                          <p>{movie.character}</p>
+                        </div>
+                      </div>
+                      <p className={styles.releaseDate}>{movie.release_date}</p>
+                    </ListItem>
+                  </button>
+                ))}
+              </ul>
+              <Button onClick={handleShowAllRows} sx={{ border: '2px solid grey', color: 'grey' }}>
+                {rowsToShow <= 3 ? 'See all' : 'Collapse All' }
+              </Button>
+            </div>
+          </>
+        )
+          : null}
 
       </div>
     </div>

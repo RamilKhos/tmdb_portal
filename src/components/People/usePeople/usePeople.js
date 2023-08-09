@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useGetAllPeopleQuery, useGetSearchPersonQuery } from '../../../api';
-import { useDebounce } from '../../../tools/useDebounce/useDeboounce';
+import { useDebounce } from '../../../tools/customHooks/useDebounce/useDeboounce';
 
 export const usePeople = () => {
   const [page, setPage] = useState(1);

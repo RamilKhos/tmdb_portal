@@ -23,5 +23,6 @@ module.exports = {
     'react/prop-types': 0,
     'react/function-component-definition': 0,
     'import/no-extraneous-dependencies': 0,
+    camelcase: 'off',
   },
 };

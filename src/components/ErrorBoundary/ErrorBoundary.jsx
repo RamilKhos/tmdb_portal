@@ -8,14 +8,12 @@ export class ErrorBoundary extends Component {
   }
 
   static getDerivedStateFromError(error) {
-    console.log('>>>>>> getDerivedStateFromError');
     return { hasError: true };
   }
 
   render() {
     const { state: { hasError }, props: { children } } = this;
     if (hasError) {
-      console.log('>>>>> ErrorBoundary render');
       return <MainErrorScreen />;
     }
 

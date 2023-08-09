@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { useNavigate } from 'react-router-dom';
 import no_image from '../../assets/images/no_image.png';
 
