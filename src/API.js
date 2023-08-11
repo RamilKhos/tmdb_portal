@@ -7,6 +7,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     getPopularFilms: builder.query({
       query: (page) => ({ url: `/discover/movie?page=${page}` }),
+      keepUnusedDataFor: 20,
     }),
     getNowPlayingFilms: builder.query({
       query: (page) => ({ url: `/movie/now_playing?page=${page}` }),
